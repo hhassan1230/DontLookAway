@@ -5,6 +5,7 @@ public class GameManagerScript : MonoBehaviour {
 	public GameObject frame;
 	public Material nextPicture;
 	public Material[] pics;
+	public GameObject moster;
 
 	private int count;
 
@@ -24,6 +25,10 @@ public class GameManagerScript : MonoBehaviour {
 			ChangeFrameColor (texture);
 			count++;
 		}
+		if (count == 4) {
+			Instantiate (moster, new Vector3 (-2.73f, 1f, -0.1f), Quaternion.identity);
+			count++;
+		} 
 
 	}
 
