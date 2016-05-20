@@ -8,6 +8,8 @@ TagManager:
   - picture
   - Forward
   - lookpoint
+  - TopBlinker
+  - BottomBlinker
   layers:
   - Default
   - TransparentFX
