@@ -7,6 +7,7 @@ public class GameManagerScript : MonoBehaviour {
 	public Material nextPicture;
 	public Material[] pics;
 	public GameObject moster;
+	public float colliderActiveDelay = 6f;
 
 	private int count;
 
@@ -14,6 +15,8 @@ public class GameManagerScript : MonoBehaviour {
 	void Start () {
 //		StartCoroutine(CallChangeColor(nextPicture));
 		count = 0;
+		DeactivatePlayerColliders ();
+		Invoke ("ActivatePlayerColliders", colliderActiveDelay);
 		LightningManager.lightningDelegate += FlickerToFifthState;
 	}
 
@@ -58,5 +61,15 @@ public class GameManagerScript : MonoBehaviour {
 		ShadeChanger scriptChanger = (ShadeChanger) frame.GetComponent(typeof(ShadeChanger));
 		scriptChanger.ChangeColor(thePic);
 
+	}
+
+	void ActivatePlayerColliders()
+	{
+		PlayerScript.instance.ActivatePlayerColliders ();
+	}
+
+	void DeactivatePlayerColliders()
+	{
+		PlayerScript.instance.DeactivatePlayerColliders ();
 	}
 }
