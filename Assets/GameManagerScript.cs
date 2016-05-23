@@ -2,6 +2,9 @@
 using System.Collections;
 
 public class GameManagerScript : MonoBehaviour {
+
+	public static GameManagerScript instance;
+
 	public GameObject frame;
 	public Material currentPicture;
 	public Material nextPicture;
@@ -9,7 +12,21 @@ public class GameManagerScript : MonoBehaviour {
 	public GameObject moster;
 	public float colliderActiveDelay = 6f;
 
+	public GameObject justOverLeftShoulderCollider;
+	public GameObject krasueSpawnPointFrontFace;
+	public GameObject krasueSpawnPointBehindLeft;
+	public GameObject krasueSpawnPointBehindRight;
+	public GameObject krasueSpawnPointNearPortrait;
+
 	private int count;
+
+	void Awake()
+	{
+		if(instance == null)
+		{
+			instance = this;
+		}
+	}
 
 	// Use this for initialization
 	void Start () {
@@ -18,19 +35,25 @@ public class GameManagerScript : MonoBehaviour {
 		DeactivatePlayerColliders ();
 		Invoke ("ActivatePlayerColliders", colliderActiveDelay);
 		LightningManager.lightningDelegate += FlickerToFifthState;
+		currentPicture = pics [count];
+		krasueSpawnPointFrontFace = GameObject.Find ("KrasueSpawnPointFrontFace");
+		krasueSpawnPointBehindLeft = GameObject.Find ("KrasueSpawnPointBehindLeft");
+		krasueSpawnPointBehindRight = GameObject.Find ("KrasueSpawnPointBehindRight");
+		krasueSpawnPointNearPortrait = GameObject.Find ("KrasueSpawnPointNearPortrait");
+
+		justOverLeftShoulderCollider.SetActive (false);
 	}
 
 	public void changePicture(){
 		if(count < (pics.Length - 1)){
+			count++;
 			currentPicture = pics [count];
 			ChangeFrameColor (currentPicture);
-			count++;
 		}
 		if (count == (pics.Length - 1)) {
-			Instantiate (moster, new Vector3 (-2.73f, 1f, -0.1f), Quaternion.identity);
-			count++;
-		} 
-
+			Instantiate (moster, krasueSpawnPointNearPortrait.transform.position, Quaternion.identity);
+			//count++;
+		}
 	}
 
 	public void FlickerToFifthState(bool newState)
@@ -71,5 +94,15 @@ public class GameManagerScript : MonoBehaviour {
 	void DeactivatePlayerColliders()
 	{
 		PlayerScript.instance.DeactivatePlayerColliders ();
+	}
+
+	public void JustOverLeftShoulderColliderSetActive()
+	{
+		justOverLeftShoulderCollider.SetActive (true);
+	}
+
+	public void JustOverLeftShoulderColliderSetDeactive()
+	{
+		justOverLeftShoulderCollider.SetActive (false);
 	}
 }

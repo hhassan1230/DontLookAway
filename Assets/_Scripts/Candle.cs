@@ -23,7 +23,8 @@ public class Candle : MonoBehaviour {
 		flameParticle = flame.GetComponent<ParticleSystem> ();
 		candleStartingIntensity = candleLightLight.intensity;
 		flameStartSize = flameParticle.startSize;
-		Invoke ("FadeOut", 3f);
+		TurnOff ();
+		Invoke ("FadeIn", 6f);
 	}
 
 	public void FadeOut()
@@ -57,6 +58,18 @@ public class Candle : MonoBehaviour {
 			yield return null;
 		}
 		flameParticle.startSize = flameStartSize;
-		candleLightLight.intensity = 1f;
+		candleLightLight.intensity = candleStartingIntensity;
+	}
+
+	void TurnOff()
+	{
+		flameParticle.startSize = 0f;
+		candleLightLight.intensity = 0f;
+	}
+
+	void TurnOn()
+	{
+		flameParticle.startSize = flameStartSize;
+		candleLightLight.intensity = candleStartingIntensity;
 	}
 }
