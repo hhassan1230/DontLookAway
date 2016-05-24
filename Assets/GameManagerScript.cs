@@ -35,6 +35,7 @@ public class GameManagerScript : MonoBehaviour {
 		DeactivatePlayerColliders ();
 		Invoke ("ActivatePlayerColliders", colliderActiveDelay);
 		LightningManager.lightningDelegate += FlickerToFifthState;
+		LightningManager.lightningDelegate += AppearKrasueInFrontFace;
 		currentPicture = pics [count];
 		krasueSpawnPointFrontFace = GameObject.Find ("KrasueSpawnPointFrontFace");
 		krasueSpawnPointBehindLeft = GameObject.Find ("KrasueSpawnPointBehindLeft");
@@ -42,6 +43,7 @@ public class GameManagerScript : MonoBehaviour {
 		krasueSpawnPointNearPortrait = GameObject.Find ("KrasueSpawnPointNearPortrait");
 
 		justOverLeftShoulderCollider.SetActive (false);
+		moster.SetActive (false);
 	}
 
 	public void changePicture(){
@@ -54,6 +56,29 @@ public class GameManagerScript : MonoBehaviour {
 			Instantiate (moster, krasueSpawnPointNearPortrait.transform.position, Quaternion.identity);
 			//count++;
 		}
+	}
+
+	public void AppearKrasueInFrontFace(bool appear)
+	{
+		if(appear == true)
+		{
+			moster.SetActive (true);
+			moster.transform.position = krasueSpawnPointFrontFace.transform.position;
+			moster.transform.rotation = Quaternion.identity;
+			//Instantiate (moster, krasueSpawnPointFrontFace.transform.position, Quaternion.identity);
+		}
+		else
+		{
+			//DestroyKrasue ();
+			moster.SetActive(false);
+			LightningManager.lightningDelegate -= AppearKrasueInFrontFace;
+		}
+	}
+		
+	public void DestroyKrasue()
+	{
+		Debug.Log ("In DestroyKrasue");
+		//Destroy (moster);
 	}
 
 	public void FlickerToFifthState(bool newState)
