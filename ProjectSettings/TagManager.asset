@@ -10,6 +10,7 @@ TagManager:
   - lookpoint
   - TopBlinker
   - BottomBlinker
+  - Phone
   layers:
   - Default
   - TransparentFX
