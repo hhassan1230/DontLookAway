@@ -17,7 +17,7 @@ public class ClickTest : MonoBehaviour {
 		if(Input.GetButtonDown("Fire1")){
 //			GameManagerScript scriptChanger = (GameManagerScript) script.GetComponent(typeof(GameManagerScript));
 			phoneScript.Play911();
-			scriptChanger.changePicture();
+//			scriptChanger.changePicture();
 		}
 	
 	}

@@ -74,6 +74,13 @@ public class GameManagerScript : MonoBehaviour {
 			LightningManager.lightningDelegate -= AppearKrasueInFrontFace;
 		}
 	}
+
+	public void LidClose(){
+		// This can be used to change the world around when the user blinks
+		print ("My Eyes are shut in the game manager!");
+//		changePicture(); // right now changing the picture can be activated though this function
+
+	}
 		
 	public void DestroyKrasue()
 	{
