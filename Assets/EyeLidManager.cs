@@ -19,6 +19,6 @@ public class EyeLidManager : MonoBehaviour {
 	}
 
 	public void LidClose(){
-		gameManagerScript.LidClose ();
+		gameManagerScript.GameManagerLidClose ();
 	}
 }

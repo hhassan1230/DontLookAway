@@ -75,10 +75,10 @@ public class GameManagerScript : MonoBehaviour {
 		}
 	}
 
-	public void LidClose(){
+	public void GameManagerLidClose(){
 		// This can be used to change the world around when the user blinks
 		print ("My Eyes are shut in the game manager!");
-//		changePicture(); // right now changing the picture can be activated though this function
+		 changePicture(); // right now changing the picture can be activated though this function
 
 	}
 		
