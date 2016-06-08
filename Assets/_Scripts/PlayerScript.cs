@@ -39,7 +39,10 @@ public class PlayerScript : MonoBehaviour {
 	{
 		for(int i = 0; i < colliderList.Count; i++)
 		{
-			colliderList [i].SetActive (true);
+			if(colliderList[i] != null)
+			{
+				colliderList [i].SetActive (true);
+			}
 		}
 	}
 
@@ -47,7 +50,10 @@ public class PlayerScript : MonoBehaviour {
 	{
 		for(int i = 0; i < colliderList.Count; i++)
 		{
-			colliderList [i].SetActive (false);
+			if(colliderList[i] != null)
+			{
+				colliderList [i].SetActive (false);
+			}
 		}
 	}
 

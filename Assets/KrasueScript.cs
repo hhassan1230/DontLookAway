@@ -25,9 +25,9 @@ public class KrasueScript : MonoBehaviour {
 
 	void LookAtPlayer()
 	{
-		Debug.Log ("Before: " + transform.rotation.ToString());
 		transform.LookAt (playerObject.transform.position);
-		Debug.Log ("After: " + transform.rotation.ToString());
-		Debug.Log ("Finished LookAtPlayer");
+		Quaternion tempRotation = transform.rotation;
+		tempRotation.y -= 90f;
+		transform.rotation = tempRotation;
 	}
 }

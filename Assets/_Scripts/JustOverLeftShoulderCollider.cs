@@ -3,14 +3,12 @@ using System.Collections;
 
 public class JustOverLeftShoulderCollider : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-	
-	}
-
-	void TriggerNextAction()
+	void OnTriggerEnter(Collider other)
 	{
-		//here you will call the next action
-		GameManagerScript.instance.changePicture();
+		if(other.gameObject.name == "PlayerLeftCollider" || other.gameObject.name == "PlayerRightCollider")
+		{
+			GameManagerScript.instance.changePicture();
+			gameObject.SetActive (false);
+		}
 	}
 }

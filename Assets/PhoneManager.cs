@@ -32,7 +32,7 @@ public class PhoneManager : MonoBehaviour {
 	private void Update()
 	{
 		if (transformPlayer) {
-			print (player.name + " is " + Distance ().ToString () + " units from " + t.name);
+//			print (player.name + " is " + Distance ().ToString () + " units from " + t.name);
 			distance = Distance ();
 			if (distance <= 2.9f){
 				print("Im in range");
